@@ -19,6 +19,7 @@ const main = currentTime => {
 window.requestAnimationFrame(main)
 
 const update = () => {
+  gameBoard.innerHTML = ''
   updateSnake()
 }
 
