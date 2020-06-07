@@ -27,3 +27,9 @@ export const drawSnake = gameBoard => {
     gameBoard.appendChild(snakeElement)
   })
 }
+
+export const snakeOnFood = (position) => {
+  return snakeBody.some(segment => {
+    return segment.x === position.x && segment.y === position.y
+  })
+}
