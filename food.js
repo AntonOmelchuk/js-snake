@@ -1,14 +1,12 @@
-import { snakeOnFood } from './snake.js'
+import { snakeOnFood, expandSnake } from './snake.js'
+import { randomFoodPosition } from './grid.js'
 
 let food = { x: 5, y: 5 }
-const EXPANSION_RATE = 1
 
 export const updateFood = () => {
   if(snakeOnFood(food)) {
-    return food = {
-      x: 10,
-      y: 10
-    }
+    expandSnake()
+    food = getFoodPosition()
   }
 }
 
@@ -20,4 +18,14 @@ export const drawFood = (gameBoard) => {
   gameBoard.appendChild(foodElement)
 
   return foodElement
+}
+
+
+const getFoodPosition = () => {
+  let newPosition
+  while(newPosition == null || snakeOnFood(newPosition)) {
+    newPosition = randomFoodPosition()
+  }
+  
+  return newPosition
 }
