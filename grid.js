@@ -6,3 +6,8 @@ export const randomFoodPosition = () => {
     y: Math.floor(Math.random() * 21 + 1)
   }
 }
+
+export const snakeOverBoard = (snakeHead) => {
+  return snakeHead.x < 0 || snakeHead.x > GRID_SIZE ||
+         snakeHead.y < 0 || snakeHead.y > GRID_SIZE
+}

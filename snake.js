@@ -34,8 +34,9 @@ export const expandSnake = () => {
   return newSegment++
 }
 
-export const snakeOnFood = (position) => {
-  return snakeBody.some(segment => {
+export const snakeOnFood = (position, { ignoreHead = false } = {}) => {
+  return snakeBody.some((segment, index) => {
+    if(ignoreHead && index === 0) return false
     return segment.x === position.x && segment.y === position.y
   })
 }
@@ -44,4 +45,10 @@ const addSnakeSegment = () => {
   snakeBody.push({...snakeBody[snakeBody.length - 1]})
 
   return newSegment = 0
+}
+
+export const getSnakeHead = () => snakeBody[0]
+
+export const snakeIntersection = () => {
+  return snakeOnFood(getSnakeHead(), { ignoreHead: true })
 }
