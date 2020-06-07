@@ -1,8 +1,9 @@
+import { snakeDirection } from './direction.js'
+
 export const SNAKE_SPEED = 2
+
 const snakeBody = [
-  { x: 11, y: 11 },
-  { x: 12, y: 11 },
-  { x: 13, y: 11 },
+  { x: 11, y: 11 }
 ]
 
 export const updateSnake = () => {
@@ -10,8 +11,11 @@ export const updateSnake = () => {
     snakeBody[i + 1] = { ...snakeBody[i] }
   }
 
-  snakeBody[0].x += 1
-  snakeBody[0].y += 0
+  const direction = snakeDirection()
+  console.log(direction)
+
+  snakeBody[0].x += direction.x
+  snakeBody[0].y += direction.y
 }
 
 export const drawSnake = gameBoard => {

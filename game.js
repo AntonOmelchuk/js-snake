@@ -1,4 +1,5 @@
 import { SNAKE_SPEED, updateSnake, drawSnake } from './snake.js'
+import { drawFood } from './food.js'
 
 const gameBoard = document.getElementById('game-board')
 
@@ -25,4 +26,5 @@ const update = () => {
 
 const draw = () => {
   drawSnake(gameBoard)
-}
+  drawFood(gameBoard)
+} 
